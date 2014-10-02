@@ -3,15 +3,31 @@ var YAZ = {};
 
 YAZ.LinkedList = function() {
   var pubAPI,
-    listNode,
+    Node,
     self = this;
 
   self._listElements = [];
+  self._firstNode = undefined;
+  self._lastNode = undefined;
 
-  self._addNode = function() {
-    var node = new listNode();
+  self._hasCurrentNode = function() {
+    return self._lastNode;
+  };
+
+  self._addNode = function(content) {
+    var node = new Node(content);
 
     self._listElements.push(node);
+    
+    if (self._firstNode) {
+      self._firstNode = node;
+    }
+
+    if (!self._hasCurrentNode) {
+      self._lastNode.setNext(node);
+    }
+
+    self._lastNode = node;
 
     return node;
   };
@@ -23,19 +39,29 @@ YAZ.LinkedList = function() {
       },
 
       addNode: self._addNode
-    }
+    };
   };
 
-  listNode = function(content) {
+  Node = function(content) {
     var self = this;
-    self._data = content;
+    self._data = content || '';
+    self._nextNode = undefined;
 
     return {
       nextNode: function() {
-        console.log('next node reference');
+        return self._nextNode;
       },
+
+      setNext: function(node) {
+        self._nextNode = node;
+      },
+
       getData: function() {
         return self._data;
+      },
+
+      update: function(data) {
+        self._data = data;
       }
     };
   };

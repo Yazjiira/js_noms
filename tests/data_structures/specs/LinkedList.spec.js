@@ -3,7 +3,9 @@
   */
 describe('LinkedList', function() {
   var list,
-      LIST_PROP_NAME = '_listElements';
+      node,
+      LIST_PROP_NAME = '_listElements',
+      NODE_CONTENT_PROP = '_data';
 
   beforeEach(function() {
     list = new YAZ.LinkedList();
@@ -24,27 +26,48 @@ describe('LinkedList', function() {
   });
 
   describe('addNode()', function() {
+    var node;
+
+    beforeEach(function() {
+      node = list.addNode();
+    });
+
     it('should add a new node object to the list', function() {
-      var node = list.addNode();
       expect(node).to.be.an('object');
     });
 
     it('should increment the list count by 1', function() {
-      list.addNode();
       expect(list.count()).to.greaterThan(0);
     });
 
     describe('new Node Object', function() {
       it('should not allow direct access to it\'s content', function() {
-
+        expect(node[NODE_CONTENT_PROP]).to.be(undefined);
       });
 
-      it('should have no content if content was not passed into addNode', function() {
-
+      it('should return an empty string if content was not passed into addNode', function() {
+        expect(node.getData()).to.be('');
       });
 
       it('should have content equal to what was passed into addNode', function() {
+        var test = 'test data';
+        node = list.addNode(test);
+        expect(node.getData()).to.be(test);
+      });
 
+      describe('Node\'s update content method', function() {
+        it('should have be a publicly available function', function() {
+          expect(node['update']).to.be.a('function');
+        });
+
+        it('should allow me to alter the node\'s content', function() {
+          var test = 'test data',
+              override = 'boom shakalaka';
+
+          node = list.addNode(test);
+          node.update(override);
+          expect(node.getData()).to.be(override);
+        });
       });
     });
   });
