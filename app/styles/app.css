@@ -1,0 +1,46 @@
+html * {
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  background: #eee;
+  padding: 20px;
+}
+
+.card {
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+	margin: 0 0 20px;
+	min-width: 300px;
+	padding: 10px;
+	background: #fff;
+}
+
+.card.svg .bottom {
+	position: relative;
+	top: -1px;
+	display: block;
+	background: black;
+	height: 290px;
+	width: 100%;
+	border-radius: 2px;
+}
+
+.foo {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.card.normal {
+	width: 320px;
+}
+
+.card.medium {
+	width: 540px;
+}
+
+.card.large {
+	width: 720px;
+}

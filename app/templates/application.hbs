@@ -1,3 +1,18 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<div class="main-content">
+  <div class="card svg normal">
+    {{topcard-slant height="94" width="390"}}
+    <div class="bottom"></div>
+  </div>
 
-{{outlet}}
+  <div class="card svg medium">
+    {{topcard-slant height="130" width="540"}}
+    <div class="bottom"></div>
+  </div>
+
+  <div class="card svg large">
+    <svg class="foo" viewBox="0, -0, 390, 94">
+      <path d="M0,94 L390,94 L390,5 Q390,0 386,1 L2,90 Q1,90 0,92" />
+    </svg>
+    <div class="bottom"></div>
+  </div>
+</div>
