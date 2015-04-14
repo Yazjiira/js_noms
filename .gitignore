@@ -1,4 +1,3 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /dist
@@ -15,3 +14,8 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+=======
+*.DS_Store*
+*._DS_Store*
+*.ds_store*
+*._ds_store*
